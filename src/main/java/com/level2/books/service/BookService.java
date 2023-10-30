@@ -5,16 +5,17 @@ import com.level2.books.dto.BookResponseDto;
 import com.level2.books.entity.Book;
 import com.level2.books.exception.BookNotFoundException;
 import com.level2.books.repository.BookRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class BookService {
 
     private final BookRepository bookRepository;
 
-    public BookService(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
 
     // 책 등록
     public BookResponseDto createBook(BookRequestDto requestDto) {

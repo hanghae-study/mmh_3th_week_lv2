@@ -5,16 +5,17 @@ import com.level2.books.dto.MemberResponseDto;
 import com.level2.books.entity.Member;
 import com.level2.books.exception.MemberNotFoundException;
 import com.level2.books.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    public MemberService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
 
     public MemberResponseDto joinMember(MemberRequestDto requestDto) {
         // 이부분이 왜이렇게 이해가안됨?

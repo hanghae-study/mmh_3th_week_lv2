@@ -6,17 +6,19 @@ import com.level2.books.entity.Book;
 import com.level2.books.entity.Rental;
 import com.level2.books.exception.RentalNotFoundException;
 import com.level2.books.repository.RentalRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
+@RequiredArgsConstructor
 public class RentalService {
+
     private final RentalRepository rentalRepository; // 렌탈 레포지토리 주입
 
-    public RentalService(RentalRepository rentalRepository) {
-        this.rentalRepository = rentalRepository;
-    }
 
     public RentalResponseDto createRent(Long id, String RRN, RentalRequestDto requestDto) {
 

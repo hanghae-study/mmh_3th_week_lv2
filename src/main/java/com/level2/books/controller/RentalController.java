@@ -3,19 +3,17 @@ package com.level2.books.controller;
 import com.level2.books.dto.RentalRequestDto;
 import com.level2.books.dto.RentalResponseDto;
 import com.level2.books.service.RentalService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api")
 public class RentalController {
 
     private final RentalService rentalService;
-
-    public RentalController(RentalService rentalService) {
-        this.rentalService = rentalService;
-    }
 
     @PostMapping("/books/rent/{bookId}")
     public RentalResponseDto createRent(
