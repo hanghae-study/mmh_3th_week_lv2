@@ -27,9 +27,9 @@ public class MemberController {
         return memberService.getMembers();
     }
 
-    // 특정 회원 조회 -> 주민등록번호로 조회
-    @GetMapping("/member/{id}")
-    public MemberResponseDto getMemberByRRN(@PathVariable String RRN) {
-        return memberService.getMemberByRRN(RRN);
+    // 특정 회원 조회 -> 전화번호 조회
+    @GetMapping("/member/{phone}")
+    public MemberResponseDto getMemberByRRN(@PathVariable String phone) {
+        return memberService.getMemberByRRN(phone);
     }
 }

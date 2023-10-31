@@ -29,15 +29,13 @@ public class Member {
     @Column(name = "gender", nullable = false)
     private String gender;
 
-    @Id
     @Column(name = "RRN", nullable = false, unique = true)
     private String RRN; // 주민등록번호
 
-    // 전화번호도 중복값이 없어야하기 때문에 unique = true
+    @Id
     @Column(name = "phone", nullable = false, unique = true)
     private String phone;
 
-    // 3. 리퀘스트디티오를 다음으로 생성해줌외
     // 요청에는 멤버의 모든 값을 넘겨줌
     public Member(MemberRequestDto requestDto) {
         // 회원으로 등록할때 필요한 내용

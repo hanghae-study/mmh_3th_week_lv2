@@ -20,7 +20,6 @@ public class BookController {
     public BookResponseDto createBook(@RequestBody BookRequestDto requestDto) {
         return bookService.createBook(requestDto);
     }
-
     // 책 전체 조회
     @GetMapping("/books")
     public List<BookResponseDto> getBooks() {
@@ -29,7 +28,7 @@ public class BookController {
 
     // 특정 책 조회
     @GetMapping("/books/{id}")
-    public BookResponseDto getBookById(@PathVariable Long id) {
-        return bookService.getBookById(id);
+    public BookResponseDto getBookById(@PathVariable Long bookId) {
+        return bookService.getBookById(bookId);
     }
 }

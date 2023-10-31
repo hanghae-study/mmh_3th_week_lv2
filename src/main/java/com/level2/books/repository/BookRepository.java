@@ -12,6 +12,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findAllByOrderByModifiedAtAsc();
 
     // 특정 책id로 책 조회
-    Book findBookById(Long id);
+    Book findBookById(Long bookId);
 
 }

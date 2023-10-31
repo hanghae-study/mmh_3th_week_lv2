@@ -2,7 +2,7 @@ package com.level2.books.dto;
 
 import lombok.Getter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 public class BookRequestDto {
@@ -10,5 +10,5 @@ public class BookRequestDto {
     private String writer;
     private String company;
     private String lang;
-    private LocalDate createdAt;
+    private LocalDateTime regDate;
 }

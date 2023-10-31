@@ -15,24 +15,17 @@ public class RentalController {
 
     private final RentalService rentalService;
 
+    // 책id값으로 대여하기
     @PostMapping("/books/rent/{bookId}")
-    public RentalResponseDto createRent(
-            @PathVariable Long id,
-            @RequestParam String RRN,
-            @RequestBody RentalRequestDto rentalRequestDto) {
+    public RentalResponseDto createRent(@RequestBody RentalRequestDto rentalRequestDto) {
         // 요청에서 bookId와 rentalRequestDto를 사용하여 대출 기록 생성 및 대출 가능 여부를 확인하는 로직
-        return rentalService.createRent(id, RRN, rentalRequestDto);
+        return rentalService.createRent(rentalRequestDto);
     }
 
-    // 특정 회원의 대출 내역 조회
-    @GetMapping("/books/rent/{memberId}")
-    public List<RentalResponseDto> getRentByMemberId(@PathVariable Long memberId) {
-        return rentalService.getRentByMemberId(memberId);
+    // 특정 회원의 대출 내역 조회 - 전화번호 조회
+    @GetMapping("/books/rent/{phone}")
+    public List<RentalResponseDto> getRentByMemberId(@PathVariable Long phone) {
+        return rentalService.getRentByMemberId(phone);
     }
 
-    // 특정 책 반납
-    @PutMapping("/books/rent/{bookId}")
-    public RentalResponseDto updateRentStatus(@PathVariable Long bookId) {
-        return rentalService.updateRentStatus(bookId);
-    }
 }

@@ -11,5 +11,5 @@ public interface MemberRepository extends JpaRepository<Member, String> {
     List<Member> findAllByOrderByModifiedAtDesc();
 
     // 특정 주민번호로 회원조회
-    Member findByRRN(String RRN);
+    Member findByPhone(String phone);
 }
