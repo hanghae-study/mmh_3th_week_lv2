@@ -13,19 +13,18 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class ReturnResponseDto {
 
+    // 책의 고유값 + 필요정보
+    private Long bookId;
+    private String writer;
+    private String title;
+
+    // 멤버 필드 값 + 필요한 정보
+    private String name;
+    private String phone;
+
     // 리턴 고유값 + 필요정보
     private Long returnId;
     private LocalDateTime returnDate;
     private boolean returnStatus;
-
-
-    // 책의 고유값 + 필요정보
-    private Long bookId;
-    private String title;
-    private String writer;
-
-    // 회원 고유값 + 필요한 정보
-    private String phone;
-    private String name;
 
 }

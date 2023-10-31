@@ -24,7 +24,7 @@ public class RentalController {
 
     // 특정 회원의 대출 내역 조회 - 전화번호 조회
     @GetMapping("/books/rent/{phone}")
-    public List<RentalResponseDto> getRentByMemberId(@PathVariable Long phone) {
+    public List<RentalResponseDto> getRentByMemberId(@PathVariable String phone) {
         return rentalService.getRentByMemberId(phone);
     }
 

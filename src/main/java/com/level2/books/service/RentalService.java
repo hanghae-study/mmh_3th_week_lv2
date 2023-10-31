@@ -34,7 +34,7 @@ public class RentalService {
     public List<RentalResponseDto> getRentByMemberId(String phone) {
 
         // 대출내역 조회
-        List<Rental> rentals = rentalRepository.findByMemberIdAndReturnStatusIsFalse(phone);
+        List<Rental> rentals = rentalRepository.findByMemberPhoneAndRentedIsFalse(phone);
 
         // Dto로 매핑
         List<RentalResponseDto> rentalList = rentals.stream()

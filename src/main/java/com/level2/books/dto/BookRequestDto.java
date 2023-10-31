@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class BookRequestDto {
+    private Long BookId;
     private String title;
     private String writer;
     private String company;

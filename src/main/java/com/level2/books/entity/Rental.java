@@ -15,10 +15,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Rental {
 
-    // 대여 엔티티를 새로 생성해서
-    // 멤버엔티티의 고유값과 북 엔티티의 고유값으로 연결
-    // 멤버(RRN) - 대여(id) - 북(id)
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long rentalId; // 대여 엔티티의 고유값
@@ -39,9 +35,10 @@ public class Rental {
     @Column(name = "rented", nullable = false)
     private boolean rented; // 대출 상태를 나타내는 필드 - 초기값은 false -> 대출되면 값 바일
 
-    public Rental(RentalRequestDto requestDto, Book book, Member member) {
+    public Rental(RentalRequestDto requestDto) {
         this.book = book;
         this.member = member;
         this.rentalDate = requestDto.getRentalDate();
+        this.rented = false;
     }
 }

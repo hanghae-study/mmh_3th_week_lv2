@@ -17,7 +17,7 @@ public class Return {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long returnId; // 대여 엔티티의 고유값
+    private Long returnId; // 반납 고유값
 
     // JPA 연관관계 매핑 사용 (안쓰고는 어떻게?)
     @ManyToOne // 멤버:대여 = 1:N (멤버한명이 여러개 반납 가능)

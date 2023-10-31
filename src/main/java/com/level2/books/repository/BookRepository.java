@@ -9,9 +9,9 @@ import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
     // 책 전체조회 오름차순
-    List<Book> findAllByOrderByModifiedAtAsc();
+    List<Book> findAllByOrderByRegDateAsc();
 
     // 특정 책id로 책 조회
-    Book findBookById(Long bookId);
+    Book findBookByBookId(Long bookId);
 
 }

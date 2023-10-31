@@ -1,6 +1,6 @@
 package com.level2.books.dto;
 
-import lombok.AllArgsConstructor;
+import com.level2.books.entity.Book;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class BookResponseDto {
     private Long bookId;
@@ -18,5 +17,14 @@ public class BookResponseDto {
     private String company;
     private String lang;
     private LocalDateTime regDate;
+
+    public BookResponseDto(Book book) {
+        this.bookId = book.getBookId();
+        this.writer = book.getWriter();
+        this.title = book.getTitle();
+        this.company = book.getCompany();
+        this.lang = book.getLang();
+        this.regDate = book.getRegDate();
+    }
 
 }

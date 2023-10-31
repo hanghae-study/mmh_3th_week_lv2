@@ -10,9 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-// 1. 우선 데이터베이스에 생성될 엔티티 테이블부터 설계
-// 2. 엔티티는 사용자(member)와 책(book) 엔티티로 설계
-
 @Entity // JPA 관리할 엔티티 클래스 지정
 @Getter
 @Setter

@@ -27,7 +27,7 @@ public class BookService {
 
     // 특정 책 조회
     public BookResponseDto getBookById(Long bookId) {
-        Book book = bookRepository.findBookById(bookId);
+        Book book = bookRepository.findBookByBookId(bookId);
 
         if (book == null) {
             // 조회한 책정보와 일치가 없으면 예외처리
@@ -39,7 +39,7 @@ public class BookService {
 
     // 책 전체 조회
     public List<BookResponseDto> getBooks() {
-        return bookRepository.findAllByOrderByModifiedAtAsc().stream().map(BookResponseDto::new).toList();
+        return bookRepository.findAllByOrderByRegDateAsc().stream().map(BookResponseDto::new).toList();
     }
 
 }

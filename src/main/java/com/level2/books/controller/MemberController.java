@@ -12,8 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class MemberController {
-    private final MemberService memberService;
 
+    private final MemberService memberService;
 
     // 회원 등록
     @PostMapping("/member")
@@ -29,7 +29,7 @@ public class MemberController {
 
     // 특정 회원 조회 -> 전화번호 조회
     @GetMapping("/member/{phone}")
-    public MemberResponseDto getMemberByRRN(@PathVariable String phone) {
-        return memberService.getMemberByRRN(phone);
+    public MemberResponseDto getMemberByPhone(@PathVariable String phone) {
+        return memberService.getMemberByPhone(phone);
     }
 }

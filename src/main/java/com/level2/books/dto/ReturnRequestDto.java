@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class ReturnRequestDto {
+    private Long returnId;
     private Long bookId;
     private String phone;
     private LocalDateTime returnDate;

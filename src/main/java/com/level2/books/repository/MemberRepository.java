@@ -8,8 +8,8 @@ import java.util.List;
 
 @Repository
 public interface MemberRepository extends JpaRepository<Member, String> {
-    List<Member> findAllByOrderByModifiedAtDesc();
+    List<Member> findAllByOrderByPhoneDesc();
 
-    // 특정 주민번호로 회원조회
+    // 특정 전화번호로 회원조회
     Member findByPhone(String phone);
 }
