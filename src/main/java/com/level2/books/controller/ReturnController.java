@@ -16,8 +16,8 @@ public class ReturnController {
 
     private final ReturnService returnService;
 
-    // 특정 책 반납
-    @PutMapping("/books/return/{bookId}")
+    // 특정 책 반납 - 여기도 안됨
+    @PutMapping("/books/rent/return/{bookId}")
     public ReturnResponseDto updateReturnStatus(@RequestBody ReturnRequestDto requestDto) {
         return returnService.updateReturnStatus(requestDto);
     }

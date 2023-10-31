@@ -20,7 +20,7 @@ public class Rental {
     private Long rentalId; // 대여 엔티티의 고유값
 
     @ManyToOne // 멤버:대여 = 1:N (멤버한명이 여러개 대여 가능)
-    @JoinColumn(name = "book_id", nullable = false)
+    @JoinColumn(name = "bookId", nullable = false)
     private Book book; // 대여한 책에 대한 참조
 
     // 책:대여 = 1:N (책 하나를 여러번 대여 가능)

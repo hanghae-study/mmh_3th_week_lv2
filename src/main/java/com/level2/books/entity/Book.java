@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.mapping.ToOne;
 
 import java.time.LocalDateTime;
 
@@ -34,6 +35,10 @@ public class Book {
     @Column(name = "regDate",  nullable = false)
     private LocalDateTime regDate; // 등록일
 
+    @Column(name = "available", nullable = false)
+    private boolean available; // 대출 가능 여부
+
+
     public Book(BookRequestDto requestDto) {
         this.bookId = requestDto.getBookId();
         this.title = requestDto.getTitle();
@@ -41,6 +46,7 @@ public class Book {
         this.writer = requestDto.getWriter();
         this.lang = requestDto.getLang();
         this.regDate = LocalDateTime.now();
+        this.available = true; // 초기 상태로 대출 가능하도록 설정
     }
 
 }
