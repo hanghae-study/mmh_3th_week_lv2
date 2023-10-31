@@ -31,10 +31,10 @@ public class Book {
     @Column(name = "lang", nullable = false)
     private String lang;
 
-    @Column(name = "createdAt", nullable = false)
+    @Column(name = "regDate")
     private LocalDateTime regDate; // 등록일
 
-    public Book(BookRequestDto requestDto){
+    public Book(BookRequestDto requestDto) {
         this.bookId = requestDto.getBookId();
         this.title = requestDto.getTitle();
         this.writer = requestDto.getWriter();
