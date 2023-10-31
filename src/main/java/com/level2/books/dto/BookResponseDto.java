@@ -1,6 +1,7 @@
 package com.level2.books.dto;
 
 import com.level2.books.entity.Book;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

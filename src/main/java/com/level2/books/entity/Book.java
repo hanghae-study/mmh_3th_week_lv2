@@ -25,18 +25,19 @@ public class Book {
     @Column(name = "writer", nullable = false)
     private String writer;
 
-    @Column(name = "company", nullable = false)
+    @Column(name = "company",  nullable = false)
     private String company;
 
-    @Column(name = "lang", nullable = false)
+    @Column(name = "lang",  nullable = false)
     private String lang;
 
-    @Column(name = "regDate")
+    @Column(name = "regDate",  nullable = false)
     private LocalDateTime regDate; // 등록일
 
     public Book(BookRequestDto requestDto) {
         this.bookId = requestDto.getBookId();
         this.title = requestDto.getTitle();
+        this.company = requestDto.getCompany();
         this.writer = requestDto.getWriter();
         this.lang = requestDto.getLang();
         this.regDate = LocalDateTime.now();

@@ -27,7 +27,7 @@ public class BookController {
     }
 
     // 특정 책 조회
-    @GetMapping("/books/{id}")
+    @GetMapping("/books/{bookId}")
     public BookResponseDto getBookById(@PathVariable Long bookId) {
         return bookService.getBookById(bookId);
     }
