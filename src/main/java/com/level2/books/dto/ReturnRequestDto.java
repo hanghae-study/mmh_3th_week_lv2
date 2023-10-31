@@ -7,8 +7,9 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class RentalRequestDto {
+public class ReturnRequestDto {
     private Long bookId;
     private String phone;
-    private LocalDateTime rentalDate;
+    private LocalDateTime returnDate;
+    private boolean returnStatus;
 }

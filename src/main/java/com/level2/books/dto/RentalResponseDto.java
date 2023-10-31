@@ -3,10 +3,12 @@ package com.level2.books.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class RentalResponseDto {
@@ -23,5 +25,4 @@ public class RentalResponseDto {
     // 렌탈의 필드 값
     private Long rentalId;
     private LocalDateTime rentalDate; // 대출일
-
 }

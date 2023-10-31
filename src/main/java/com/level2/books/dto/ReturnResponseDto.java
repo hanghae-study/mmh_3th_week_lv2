@@ -11,12 +11,21 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookResponseDto {
+public class ReturnResponseDto {
+
+    // 리턴 고유값 + 필요정보
+    private Long returnId;
+    private LocalDateTime returnDate;
+    private boolean returnStatus;
+
+
+    // 책의 고유값 + 필요정보
     private Long bookId;
     private String title;
     private String writer;
-    private String company;
-    private String lang;
-    private LocalDateTime regDate;
+
+    // 회원 고유값 + 필요한 정보
+    private String phone;
+    private String name;
 
 }

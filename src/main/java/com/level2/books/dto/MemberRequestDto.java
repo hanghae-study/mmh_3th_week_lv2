@@ -1,8 +1,10 @@
 package com.level2.books.dto;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class MemberRequestDto {
     // 회원등록을할 때 요청되는 정보들
     private String name;
