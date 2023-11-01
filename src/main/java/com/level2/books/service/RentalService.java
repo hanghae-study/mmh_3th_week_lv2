@@ -11,6 +11,7 @@ import com.level2.books.repository.RentalRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,49 +25,44 @@ public class RentalService {
     private final BookRepository bookRepository;
 
     public RentalResponseDto createRent(RentalRequestDto requestDto) {
-
-        // 0. 회원의 고유값을 받아오기
-        String phone = requestDto.getPhone(); // 전화번호를 가져오기
-
-        // 1. 회원이 빌려간 책이 있는지 확인
+        String phone = requestDto.getPhone();
         Member member = memberRepository.findById(phone)
                 .orElseThrow(() -> new RuntimeException("회원을 찾을 수 없습니다."));
 
-        // 2. 회원이 이미 빌려간 책이 있는 경우 예외처리
-        if (alreadyRent(phone)) {
-            throw new RuntimeException("회원이 이미 빌려간 책이 있어 대출할 수 없습니다.");
+        if (hasUnreturnedBooks(phone)) {
+            throw new RuntimeException("회원이 반납하지 않은 책이 있어 대출할 수 없습니다.");
         }
 
         Long bookId = requestDto.getBookId();
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new RuntimeException("책을 찾을 수 없습니다."));
 
-        // 3. 회원이 빌려간 책이 없지만, 책이 이미 다른 회원이 빌려간 상태면 예외처리
-        if (!book.isAvailable()) {
-            throw new RuntimeException("다른 회원이 이미 이 책을 대출 중입니다.");
-        }
+        // 책의 상태를 확인하고 변경
+        checkAndSetBookStatus(book, true); // true는 대출 가능 상태
 
-        // 4. 대출 가능한 경우 빌려주고 책 상태를 빌려간 상태로 변경
         Rental rental = new Rental();
         rental.setMember(member);
         rental.setBook(book);
         rental.setRented(true);
-
+        rental.setRentalDate(LocalDateTime.now());
         rentalRepository.save(rental);
 
-        book.setAvailable(false);
+        return new RentalResponseDto(rental);
+    }
+
+    private boolean hasUnreturnedBooks(String phone) {
+        // 반납하지 않은 책이 있는지 확인하는 로직
+        List<Rental> unreturnedRentals = rentalRepository.findByMemberPhoneAndRentedIsFalse(phone);
+        return !unreturnedRentals.isEmpty();
+    }
+
+    private void checkAndSetBookStatus(Book book, boolean availability) {
+        if (!book.isAvailable() == availability) {
+            throw new RuntimeException(availability ? "선택한 책은 이미 대출 중입니다." : "선택한 책은 대출 가능하지 않습니다.");
+        }
+        book.setAvailable(!availability);
         bookRepository.save(book);
-
-        RentalResponseDto rentalResponseDto = new RentalResponseDto(rental);
-        return rentalResponseDto;
     }
-
-    private boolean alreadyRent(String phone) {
-        // 회원이 빌려간 책이 있는지 확인하는 로직을 구현
-        List<Rental> rentals = rentalRepository.findByMemberPhone(phone);
-        return !rentals.isEmpty();
-    }
-
 
     // 1. 회원 전화번로를 입력하면
     // 2. 해당 회원이 대출한 책의 전체 내역을 반환
@@ -85,4 +81,5 @@ public class RentalService {
         rentalList.sort(Comparator.comparing(RentalResponseDto::getRentalDate));
         return rentalList;
     }
+
 }

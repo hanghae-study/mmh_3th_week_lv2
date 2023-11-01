@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.mapping.ToOne;
 
 import java.time.LocalDateTime;
 
@@ -32,7 +31,7 @@ public class Book {
     @Column(name = "lang",  nullable = false)
     private String lang;
 
-    @Column(name = "regDate",  nullable = false)
+    @Column(name = "regDate", nullable = false)
     private LocalDateTime regDate; // 등록일
 
     @Column(name = "available", nullable = false)

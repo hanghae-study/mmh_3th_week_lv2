@@ -18,6 +18,7 @@ public class BookResponseDto {
     private String company;
     private String lang;
     private LocalDateTime regDate;
+    private boolean available;
 
     public BookResponseDto(Book book) {
         this.bookId = book.getBookId();
@@ -26,6 +27,7 @@ public class BookResponseDto {
         this.company = book.getCompany();
         this.lang = book.getLang();
         this.regDate = book.getRegDate();
+        this.available = book.isAvailable();
     }
 
 }

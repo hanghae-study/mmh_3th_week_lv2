@@ -9,7 +9,4 @@ import java.util.List;
 @Repository
 public interface RentalRepository extends JpaRepository<Rental, Long> {
     List<Rental> findByMemberPhoneAndRentedIsFalse(String phone);
-
-    List<Rental> findByMemberPhone(String phone);
-
 }

@@ -31,6 +31,6 @@ public class RentalResponseDto {
         this.phone = getPhone(); // 멤버의 전화번호
         this.name = getName(); // 멤버의 이름
         this.rentalId = rental.getRentalId(); // 렌탈한 책의 고유값
-        this.rentalDate = rental.getRentalDate();
+        this.rentalDate = LocalDateTime.now();
     }
 }

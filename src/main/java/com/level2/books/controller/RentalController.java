@@ -2,7 +2,10 @@ package com.level2.books.controller;
 
 import com.level2.books.dto.RentalRequestDto;
 import com.level2.books.dto.RentalResponseDto;
+import com.level2.books.dto.ReturnRequestDto;
+import com.level2.books.dto.ReturnResponseDto;
 import com.level2.books.service.RentalService;
+import com.level2.books.service.ReturnService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +18,9 @@ public class RentalController {
 
     private final RentalService rentalService;
 
-    // 책id 값으로 대여 - 안됨
+    // 책id 값으로 대여  -> 전달은 되는데 null 값나옴
     @PostMapping("/books/rent/{bookId}")
     public RentalResponseDto createRent(@RequestBody RentalRequestDto rentalRequestDto) {
-        // 요청에서 bookId와 rentalRequestDto를 사용하여 대출 기록 생성 및 대출 가능 여부를 확인하는 로직
         return rentalService.createRent(rentalRequestDto);
     }
 

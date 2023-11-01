@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class Rental {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long rentalId; // 대여 엔티티의 고유값
 
     @ManyToOne // 멤버:대여 = 1:N (멤버한명이 여러개 대여 가능)
@@ -29,16 +29,16 @@ public class Rental {
     @JoinColumn(name = "phone", nullable = false)
     private Member member; // 멤버 엔티티 참조
 
-    @Column(name = "rental_date", nullable = false)
+    @Column(name = "rental_date")
     private LocalDateTime rentalDate; // 대여 일자
 
     @Column(name = "rented", nullable = false)
-    private boolean rented; // 대출 상태를 나타내는 필드 - 초기값은 false -> 대출되면 값 바일
+    private boolean rented; // 대출이 되었는가? 대출이 가능한가?
 
-    public Rental(RentalRequestDto requestDto) {
+    public Rental(RentalRequestDto requestDto, Book book, Member member) {
         this.book = book;
         this.member = member;
-        this.rentalDate = requestDto.getRentalDate();
+        this.rentalDate = LocalDateTime.now();
         this.rented = false;
     }
 }

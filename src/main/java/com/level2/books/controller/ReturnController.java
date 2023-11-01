@@ -4,21 +4,26 @@ import com.level2.books.dto.ReturnRequestDto;
 import com.level2.books.dto.ReturnResponseDto;
 import com.level2.books.service.ReturnService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api")
 public class ReturnController {
 
     private final ReturnService returnService;
 
-    // 특정 책 반납 - 여기도 안됨
-    @PutMapping("/books/rent/return/{bookId}")
-    public ReturnResponseDto updateReturnStatus(@RequestBody ReturnRequestDto requestDto) {
-        return returnService.updateReturnStatus(requestDto);
+    @Autowired // 생성자 주입
+    public ReturnController(ReturnService returnService) {
+        this.returnService = returnService;
+    }
+
+    @PutMapping("/books/return/{bookId}")
+    public ResponseEntity<ReturnResponseDto> updateReturnStatus(
+            @PathVariable Long bookId,
+            @RequestBody ReturnRequestDto requestDto) {
+        ReturnResponseDto responseDto = returnService.returnBook(bookId, requestDto.getPhone());
+        return ResponseEntity.ok(responseDto);
     }
 }
