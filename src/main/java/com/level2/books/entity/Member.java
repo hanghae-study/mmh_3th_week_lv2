@@ -13,7 +13,7 @@ import lombok.Setter;
 @Entity // JPA 관리할 엔티티 클래스 지정
 @Getter
 @Setter
-@Table(name = "member") // 매핑없이도 똑같이 구동되야한다 했지만 우선 함
+@Table(name = "member")
 @NoArgsConstructor
 public class Member {
 
@@ -27,15 +27,15 @@ public class Member {
     private String gender;
 
     @Column(name = "RRN", nullable = false, unique = true)
-    private String RRN; // 주민등록번호
+    private String RRN; // 주민등록번호 - not null & unique 성립하나 민감정보
 
-    @Id
+    @Id // pk는 전화번호
     @Column(name = "phone", nullable = false, unique = true)
     private String phone;
 
     // 요청에는 멤버의 모든 값을 넘겨줌
     public Member(MemberRequestDto requestDto) {
-        // 회원으로 등록할때 필요한 내용
+        // 회원으로 등록할때 필요한 내용 -> 반환은 rrn 빼고 반환
         this.name = requestDto.getName();
         this.address = requestDto.getAddress();
         this.gender = requestDto.getGender();

@@ -10,9 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 public class ReturnRequestDto {
-    //private Long rentalId;
     private Long bookId;
     private String phone;
     private LocalDateTime returnDate;
-    //private boolean returnStatus;
 }

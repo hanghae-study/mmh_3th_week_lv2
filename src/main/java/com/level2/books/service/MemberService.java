@@ -28,7 +28,7 @@ public class MemberService {
         return memberResponseDto;
     }
 
-    // 전체 회원조회 -> 요구사항에는 전체회원조회는 없었던듯
+    // 전체 회원조회
     public List<MemberResponseDto> getMembers() {
         // DB 조회 -> 등록한 모든 회원 조회 -> 수정일 기준으로 내림차순 조회
         return memberRepository.findAllByOrderByPhoneDesc().stream().map(MemberResponseDto::new).toList();

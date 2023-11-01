@@ -14,16 +14,16 @@ import java.time.LocalTime;
 @NoArgsConstructor
 public class ReturnResponseDto {
 
-    // 책의 고유값 + 필요정보
+    // 반환될 책관련 정보
     private Long bookId;
     private String writer;
     private String title;
 
-    // 멤버 필드 값 + 필요한 정보
+    // 반환될 회원관련 정보
     private String name;
     private String phone;
 
-    // 리턴 고유값 + 필요정보
+    // 리턴 고유값 -> 책 반환하면 찍히는 시간
     private LocalDateTime returnDate;
 
     // 성공여부, 메세지
@@ -32,11 +32,15 @@ public class ReturnResponseDto {
 
 
     public ReturnResponseDto(Return aReturn) {
+
+        // TODO null의 원인
         this.bookId = getBookId(); // 책의 고유값
         this.writer = getWriter(); // 작가
         this.title = getTitle(); // 제목
         this.phone = getPhone(); // 회원의고유값
         this.name = getName(); // 회원이름
+
+        // 여기는 정상출력
         this.returnDate = LocalDateTime.now();
         this.success = success;
         this.message = message;

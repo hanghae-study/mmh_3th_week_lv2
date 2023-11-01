@@ -17,22 +17,20 @@ public class Return {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long returnId; // 반납 고유값
+    private Long returnId; // 반납 고유값 -> 데이터베이스에는 기록이되나 따로 사용하는건 안함 -> 사용하려했으나 실패
 
-    @ManyToOne // 책:반납 = 1:N (책 하나를 여러번 반납 가능)
+    @ManyToOne // 책:반납 = 1:N (책 하나를 여러번 반납 가능) -> 책하고 반납도 @OneToOne이 되어야하는거 아닌지..?
     @JoinColumn(name = "book_id", nullable = false)
-    private Book book; // 반납한 책에 대한 참조
+    private Book book; // 책에 대한 참조
 
     @ManyToOne // 멤버:반납 = 1:N (멤버한명이 여러개 반납 가능)
     @JoinColumn(name = "phone", nullable = false)
-    private Member member; // 멤버 엔티티 참조
+    private Member member; // 멤버에 대한 참조
 
     @Column(name = "return_date")
     private LocalDateTime returnDate; // 반납 일자
 
-    // 반납상태 대신 -> 렌탈필드에서 대출가능상태로 해결해야할듯
-    // @Column(name = "return_status")
-    // private boolean returnStatus; // 반납상태
+    // TODO 반납상태 추가해서 빌린상태와 반납상태가 서로 반대로 동작하게 하고싶었으나 실패
 
     public Return(ReturnRequestDto requestDto, Book book, Member member) {
         this.book = book;

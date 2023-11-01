@@ -15,6 +15,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Rental {
 
+    // TODO rental 과 Return 엔티티를 OneToOne으로 연결하고싶었으나 실패
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long rentalId; // 대여 엔티티의 고유값

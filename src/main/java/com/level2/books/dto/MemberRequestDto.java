@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class MemberRequestDto {
+
     // 회원등록을할 때 요청되는 정보들
     private String name;
     private String address;
