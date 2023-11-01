@@ -50,6 +50,7 @@ public class RentalService {
 
         // 새로 Rental을 만들어주고 ->
         // 회원정보, 책의 정보, 대여가능 여부, 시간을 하나씩 가져와서 저장후에 -> 반환
+        //원래 값을 변형될 위험이 있음
         Rental rental = new Rental();
         rental.setMember(member);
         rental.setBook(book);
