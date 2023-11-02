@@ -45,12 +45,10 @@ public class RentalService {
 
         // 책의 상태를 확인하고 변경
         // 책을 이미 다른 회원이 빌린경우 대출불가, 혹은 다른이유로 빌릴수 없는 경우 (결국 t/f 둘다 책을 빌릴수 없음)
-        //
         checkAndSetBookStatus(book, true); // true는 대출 가능 상태
 
-        // 새로 Rental을 만들어주고 ->
-        // 회원정보, 책의 정보, 대여가능 여부, 시간을 하나씩 가져와서 저장후에 -> 반환
-        //원래 값을 변형될 위험이 있음
+        // 새로 Rental을 만들어주고 -> 회원정보, 책의 정보, 대여가능 여부, 시간을 하나씩 가져와서 저장후에 -> 반환
+        // 원래 값을 변형될 위험이 있음
         Rental rental = new Rental();
         rental.setMember(member);
         rental.setBook(book);

@@ -1,5 +1,6 @@
 package com.level2.books.dto;
 
+import com.level2.books.entity.Rental;
 import com.level2.books.entity.Return;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
