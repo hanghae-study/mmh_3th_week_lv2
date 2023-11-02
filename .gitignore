@@ -18,6 +18,7 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
+### properties 추가 (Test) ###
 **/application-*.properties
 .idea
 *.iws
